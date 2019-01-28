@@ -3,9 +3,14 @@
   "description": "Bing 搜索插件",
   "version": "1.0",
   "manifest_version": 2,
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
   "browser_action": {
     "default_icon": "bing.png",
-    "default_title": "Bing 搜索\n可打开主页",
-    "default_popup": "hello.html"
+    "default_title": "打开 Bing 搜索主页"
   }
 }
