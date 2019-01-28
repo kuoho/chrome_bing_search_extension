@@ -1,0 +1,11 @@
+{
+  "name": "chrome bing search extension",
+  "description": "Bing 搜索插件",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": "bing.png",
+    "default_title": "Bing 搜索\n可打开主页",
+    "default_popup": "hello.html"
+  }
+}
