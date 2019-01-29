@@ -14,7 +14,19 @@
     "persistent": false
   },
   "browser_action": {
-    "default_icon": "bing.png",
+    "default_icon": {
+      "16": "images/icon_bing_16X16.png",
+      "24": "images/icon_bing_24X24.png",
+      "32": "images/icon_bing_32X32.png",
+      "48": "images/icon_bing_48X48.png"
+    },
     "default_title": "打开 Bing 搜索主页"
+  },
+  "icons": {
+    "16": "images/icon_bing_16X16.png",
+    "24": "images/icon_bing_24X24.png",
+    "32": "images/icon_bing_32X32.png",
+    "48": "images/icon_bing_48X48.png",
+    "128": "images/icon_bing_128X128.png"
   }
 }

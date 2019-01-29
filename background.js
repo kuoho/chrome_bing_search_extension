@@ -1,10 +1,11 @@
-const bingUrl = "https://cn.bingSearch.com/";
+const bingUrl = "https://cn.bing.com/";
+
 /**
- * 代开新标签页并跳转Bing主页
+ * 代开新标签页并跳转
  */
-function openTab() {
+function openTab(url) {
     chrome.tabs.create({
-        'url': bingUrl,
+        'url': url,
         'selected': true
     });
 }
@@ -15,21 +16,34 @@ function openTab() {
  * @param tab
  */
 function bingSearch(info, tab) {
-    var text = encodeURIComponent(info.selectionText);
-    var searchUrl = bingUrl + "search?q=" + text;
-
-    window.open(searchUrl);
+    let queryStr = encodeURIComponent(info.selectionText);
+    let searchUrl = bingUrl + "search?q=" + queryStr;
+    openTab(searchUrl);
 }
 
 /**
  * 搜索图片
  */
 function bingSearchImg(info, tab) {
-    var srcUrl = info.srcUrl;
-    window.open(srcUrl)
+    let srcUrl = info.srcUrl;
+    let formData = {
+        "view": "detailv2",
+        "iss": "sbi",
+        "form": "SBIIRP",
+        "rtpu": "https://www.bing.com/images/discover?FORM=ILPMFT",
+        "sbisrc": "UrlPaste",
+        "q": "imgurl:" + srcUrl,
+        "selectedindex": "0",
+        "id": srcUrl,
+        "mediaurl": srcUrl,
+        "exph": 0,
+        "expw": 0,
+        "vt": 0
+    };
+    openTab("https://www.bing.com/images/search?" + new URLSearchParams(formData).toString())
 }
 
-// 点击toolBar 图标 跳转主页
+// 绑定点击toolBar 图标 跳转主页
 chrome.browserAction.onClicked.addListener(openTab);
 
 // 安装时绑定右键菜单
@@ -44,7 +58,7 @@ chrome.runtime.onInstalled.addListener(function () {
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
     let menuItemId = info.menuItemId;
     if (menuItemId === "bingExtNewTab") {
-        openTab()
+        openTab(bingUrl)
     } else if (menuItemId === 'bingSearchTxt') {
         bingSearch(info, tab)
     } else if (menuItemId === 'bingSearchImg') {
