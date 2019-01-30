@@ -44,7 +44,9 @@ function bingSearchImg(info, tab) {
 }
 
 // 绑定点击toolBar 图标 跳转主页
-chrome.browserAction.onClicked.addListener(openTab);
+chrome.browserAction.onClicked.addListener(function () {
+    openTab(bingUrl)
+});
 
 // 安装时绑定右键菜单
 chrome.runtime.onInstalled.addListener(function () {
