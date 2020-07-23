@@ -1,7 +1,7 @@
 {
   "name": "chrome bing search extension",
   "description": "Bing 搜索插件",
-  "version": "2.0",
+  "version": "2.1",
   "manifest_version": 2,
   "permissions": [
     "contextMenus",
